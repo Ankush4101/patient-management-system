@@ -18,7 +18,7 @@ import java.util.UUID;
 @Service
 public class PatientService {
 
-    //NOTE:: here we do not need @Autowire beacsue after spring 4.3 if you have only one constructor
+    //NOTE:: here we do not need @Autowire because after spring 4.3 if you have only one constructor
     //       in class then no need to specify it with @Autowire.
     private PatientRepository patientRepository;
 
@@ -58,5 +58,9 @@ public class PatientService {
 
        Patient updatedPatient = patientRepository.save(patient);
        return PatientMapper.toDTO(updatedPatient);
+    }
+
+    public void deletePatient(UUID id) {
+        patientRepository.deleteById(id);
     }
 }
