@@ -1,0 +1,27 @@
+//This proto file is kind of bluePrint to create server that handle the other services requests.
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "billing";
+
+//creating service that works as grpc server:
+service BillingService {
+  //creating two request and response objects:
+  //creating method called createBillingAccount that we will later override when we need to use.
+  rpc CreateBillingAccount (BillingRequest) returns (BillingResponse);
+}
+
+//initializing request and response objects through message.
+//message describes :: what is billing request and response  is look like.
+
+message BillingRequest {
+  //make sure that below properties are initialized uniq that's the reason we gave 1,2,3.
+  string patientId = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message BillingResponse {
+  string accountId = 1;
+  string status = 2;
+}
